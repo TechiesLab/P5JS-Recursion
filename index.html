@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Récursion</title>
+  <link rel="shortcut icon" type="image/png" href="images/ico_full.png"/>
+  <link rel="stylesheet" href="stylesheet/prism.css">
+  <link rel="stylesheet" href="stylesheet/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+  <!-- Introduction -->
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url('https://besthqwallpapers.com/Uploads/25-4-2019/88786/thumb2-earth-at-night-from-space-europe-city-lights-continent-satellite-view.jpg');">
+    <div id="class-languages">
+      <i class="fab fa-html5 mr-1" style="color: #f84820"></i>
+      <i class="fab fa-css3-alt mr-1" style="color: #1970b5"></i>
+      <i class="fab fa-js-square mr-1" style="color: #FFE01B"></i>
+    </div>
+    <div class="container">
+      <div class="main">
+        <img src="images/logo.png" alt="">
+        <div class="class-title">
+          <h1>Récursion</h1>
+        </div>
+      </div>
+      <p>Salut! Aujourd'hui on va explorer un concept très important en programmation, la récursion!</p>
+      <a class="btn btn-primary tl-button" href="#challenge" role="button">Commencer !</a>
+    </div>
+  </div>
+
+  <div class="container" id="challenge">
+
+    <div class="accordion" id="accordionExample">
+
+      <!-- Étape 1 -->
+      <div class="card">
+        <div class="card-header" id="heading1">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+              Étape 1 - Défis à compléter avant celui-ci
+            </button>
+          </h2>
+        </div>
+        <div id="collapse1" class="collapse show" aria-labelledby="heading1" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Avant de t'attaquer à ce défi, on te conseille de compléter les défis suivants:</p>
+            <ol>
+              <li><a href="https://techieslab.github.io/year-prediction_instructions/" target="_blank">En 2020 je serai...</a></li>
+              <li><a href="https://techieslab.github.io/rainbow_instructions/" target="_blank">Ça va bien aller</a></li>
+              <li><a href="https://techieslab.github.io/soap-bubble-adv_instructions/" target="_blank">Bulles de savant</a></li>
+              <li><a href="ttps://techieslab.github.io/10Print/" target="_blank">10 Print</a></li>
+              <li><a href="ttps://techieslab.github.io/WEBGL/" target="_blank">WEBGL</a></li>
+              <li><a href="ttps://techieslab.github.io/animation-3d/" target="_blank">Animation 3D</a></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 2 -->
+      <div class="card">
+        <div class="card-header" id="heading2">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+              Étape 2 - Des cercles
+            </button>
+          </h2>
+        </div>
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>On va commencer ce projet en dessinant quelques cercles. Pour commencer, dessine un cercle au milieu de l'écran. Souviens-toi qu'un cercle peut être dessiné en utilisant la fonction <code>circle()</code>, qui prend 3 paramètres, deux pour la position et un pour le diamètre.</p>
+
+            <p>Tu peux enlever la couleur à l'intérieur du cercle grâce à la fonction <code>noFill()</code>, et tu peux changer la taille du traît grâce à la fonction <code>strokeWeight()</code>. Change ton cercle en un cercle vide mais avec un traît épais.</p>
+
+            <pre><code class="language-js">
+              function draw() {
+                background(220);
+                noFill();
+                strokeWeight(10);
+                circle(200, 200, 300);
+              }              
+            </code></pre>
+
+            <p>On ne va pas se contenter de dessiner un seul cercle, on aimerait en dessiner plusieurs. Commençons par une tâche pas trop compliquée. On veut dessiner des cercles pour qu'ils ressemblent à la figure suivante:</p>
+
+            <img src="./images/circles_for_samesize.png" alt="" style="width: 50%; margin-left: 25%">
+
+            <p>L'idée est assez simple! On dessine un cercle de centre (-400, 200), puis un de centre (-350, 200), etc jusqu'à (400, 200). Essaie de dessiner tous les cercles!</p>
+
+            <p>C'est un peu long non? Pour dessiner ces 9 cercles il faut écrire 9 lignes de code. Tu te dis sûrement que 9 n'est pas la fin du monde, mais si je te demande d'en dessiner 200 comment vas-tu faire?</p>
+
+            <p>En réalité il existe une fonction très utile en JavaScript pour ce faire! Sais-tu de quoi je parle?</p>
+
+            <p><a class="btn btn-danger" data-toggle="collapse" href="#rep2a" role="button" aria-expanded="false" aria-controls="rep2a">Réponse</a></p>
+            <div class="collapse mb-3" id="rep2a">
+              <div class="card card-body">
+                <p>On va utiliser une boucle! On a déjà utilisé des boucles dans le cours sur les Animations 3D! Voici un rappel de la syntaxe des boucles:</p>
+
+                <pre><code class="language-js">
+                  for(let i = 0; i < 20; i++) {
+                    // Cette boucle va exécuter quelque chose 20 fois
+                  }
+                </code></pre>
+              </div>
+            </div>
+
+            <p>Même si on croit connaître un peu les boucles, on ne les a pas encore entièrement exploitées! En effet, on peut utilises les boucles pour plus que simplement exécuter un même code plusieurs fois!</p>
+
+            <p>On voudrait dessiner des cercles avec des centres (-400, 200), (-350, 200), ..., (350, 200), (400, 200). On peut donc utiliser un boucle qui va de -400 à 400, avec des pas de taille 50!</p>
+
+            <pre><code class="language-js">
+              for(let i = -400; i <= 400; i += 50) {
+                // Faire quelque chose
+              }
+            </code></pre>
+
+            <p>Si tu veux, tu peux même remplacer le nom de variable <code>i</code> pas un autre nom, genre <code>positionX</code>. C'est ton choix ;-) </p>
+
+            <p>Re-écris ton code en utilisant une boucle. Les 9 lignes d'avant peuvent être réduites en 3! Et si tu veux dessiner 200 cercles, tu peux le faire avec pratiquement les mêmes 3 lignes! C'est magique non?</p>
+
+            <p><a class="btn btn-danger" data-toggle="collapse" href="#rep2b" role="button" aria-expanded="false" aria-controls="rep2b">Réponse</a></p>
+            <div class="collapse mb-3" id="rep2b">
+              <div class="card card-body">
+                <pre><code class="language-js">
+                  for(let positionX = -400; positionX <= 400; positionX += 50) {
+                    circle(positionX, 200, 300);
+                  }
+                </code></pre>
+              </div>
+            </div>
+
+            <p>Imagine maintenant que tu veuille que les cercles deviennent de plus en plus petits. Il va nous être compliqué d'utiliser la variable <code>positionX</code> en rapport avec la taille, donc on peut définir une autre variable avant la boucle, et la changer à chaque itération de la boucle. C'est un peu moche, mais cela va marcher. Voici un exemple:</p>
+
+            <pre><code class="language-js">
+              let diam = 300;
+              for(let positionX = -400; positionX <= 400; positionX += 50) {
+                circle(positionX, 200, diam);
+                diam -= 15;
+              }
+            </code></pre>
+
+            <p>Dans l'étape suivante on va essayer de reproduire le même résultat avec une autre technique. Elle est plus compliquée, mais beaucoup plus extensible et on pourra faire de magnifiques motifs avec!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 3 -->
+      <div class="card">
+        <div class="card-header" id="heading3">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+              Étape 3 - Récursion
+            </button>
+          </h2>
+        </div>
+        <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>Tu sais sûrement ce qu'est une fonction. On a des exemples de fonctions dans chaque code p5.js, comme les fonctions <code>setup()</code> et <code>draw()</code>. Les fonctions sont très faciles à retrouver dans le code, comme il y a le mot <code>function</code> devant!</p>
+
+            <p>La fonction <code>setup()</code> s'exécute au début du code, et la fonction <code>draw()</code> s'exécute à chaque instant. Celles ci sont pré-définies en p5.js. Mais on peut aussi définir nos propres fonctions!</p>
+
+            <p>Pour définir notre propre fonction, il suffit de reproduire le pattern observé sur les fonctions prédéfinies. </p>
+
+            <pre><code class="language-js">
+              function maFonction() {
+                // Fait quelque chose
+              }
+            </code></pre>
+
+            <p>Écris une fonction qui dessine un cercle au centre de l'écran. Tu peux la définir tout à la fin du code, après l'accolade de fermeture de la fonction <code>draw()</code>. Tu peux aussi enlever la boucle d'avant, comme on va la remplacer par d'autres codes.</p>
+
+            <p>Image que tu aies appellé ta fonction <code>dessinerCercle()</code>. Pour l'exécuter, il te suffit, dans la fonction <code>draw()</code>, de l'<i>appeler</i>. Pour l'appeler, écris simplement <code>dessinerCercle()</code>. Cette fonction marche comme toutes les autres fonctions, sauf que c'est toi même qui l'a écrite!</p>
+
+            <pre><code class="language-js">
+              function setup() {
+                // ...
+              }
+
+              function draw() {
+                // ...
+                dessinerCercle();
+              }
+
+              function dessinerCercle() {
+                // ...
+              }
+            </code></pre>
+
+            <p>Tu te dis sûrement que c'est débile de définir une fonction pour faire quelque chose qu'une fonction qui existe déjà peut faire, et tu as bien raison! Mais on va compliquer notre fonction pour la rendre utile!</p>
+
+            <p>Malheureusement on va devoir la rendre plus inutile avant de pourvoir la compliquer. On va lui ajouter des <b>paramètres</b>. Tu sais que la fonction <code>circle</code> peut prendre 3 paramètres, deux pour la position et un pour la taille. Notre fonction <code>dessinerCercle()</code> peut prendre des paramètres aussi, il nous suffit de le dire à la fonction quand on la définit!</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                // ...
+              }
+            </code></pre>
+
+            <p>En ajoutant le nom des paramètres dans les parenthèse, on indique que la fonction <code>dessinerCercle</code> prend 3 paramètres. Tu dois donc faire attention dans ta fonction <code>draw()</code>, tu dois ajouter les paramètres</p>
+
+            <pre><code class="language-js">
+              dessinerCercle(200, 200, 300);
+            </code></pre>
+
+            <p>Pour le moment, les paramètres qu'on donne à la fonction dans la fonction <code>draw()</code> n'importent peu, comme on ne les utilise pas dans la fonction <code>dessinerCercle()</code>. Changeons cela!</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                circle(positionX, 200, 300);
+              }
+            </code></pre>
+
+            <p>Dans cette fonction, on utilise la positionX. Si tu changes le premier paramètre dans la fonction <code>draw()</code>, tu vas voir que le cercle bouge en X. Intègre les deux autres paramètres de la même façon!</p>
+
+            <p>Super! Notre fonction <code>dessinerCercle()</code> est officiellement la plus inutile des fonction! Pourquoi cela?</p>
+
+            <p><a class="btn btn-danger" data-toggle="collapse" href="#rep3a" role="button" aria-expanded="false" aria-controls="rep3a">Réponse</a></p>
+            <div class="collapse mb-3" id="rep3a">
+              <div class="card card-body">
+                <p>Comme la fonction <code>dessinerCercle()</code> prend exactement les mêmes paramètres que la fonction <code>circle</code>, et qu'elle les utilise pour dessiner un cercle en utilisant la fonction <code>circle()</code>, on pourrait simplement écrire <code>circle()</code> plutôt que d'écrire <code>dessinerCercle()</code>, et cela aurait exactement le même effet...</p>
+              </div>
+            </div>
+
+            <p>Rendons donc cette fonctions plus utile! On va faire cela grâce à la récursion!</p>
+
+            <p>Quand tu appelles la fonction, tu dis à l'ordinateur de dessiner un cercle. Imagine l'ordinateur pourrait se dire à lui même de dessiner un cercle! Par exemple, à chaque fois que l'ordinateur a dessiné un cercle, il se dit à lui même d'en dessiner encore un, mais un peu plus petit. Cela serait cool non?</p>
+
+            <p>Et c'est possible! C'est ce qu'on appelle la récursion, quand l'ordinateur se dit des choses à soi-même!</p>
+
+            <p>Pour implémenter la récursion, on va simplement appeler la fonction <code>dessinerCercle()</code> à la fin de la fonction <code>dessinerCercle()</code>. Avant de ce faire, essayons de comprendre pourquoi cela va marcher!</p>
+
+            <p>Dans la fonction <code>draw()</code>, on va appeler la fonction <code>dessinerCercle()</code> en lui disant de dessiner un cercle de taille disons 300. L'ordinateur va alors dessiner ce cercle, et quand il arrive à la fin de la fonction, il va se re-appeler en disant de re-dessiner un cercle, mais cette fois de taille un peu plus petite. Et ceci jusqu'à l'infini. C'est comme une boucle, mais plus intelligente. Tu verra plus tard pourquoi elle est plus intelligente!</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                // Dessiner le cercle
+                dessinerCercle(positionX, positionY, taille - 10);
+              }
+            </code></pre>
+
+            <p>Il faut faire très attention avec ce code! Si ton ordinateur n'est pas super puissant, NE LANCE PAS le code! Mon ordinateur a failli cracher...</p>
+
+            <p>En fait ce code va vraiment s'exécuter jusqu'à l'infini! Mais c'est un infini plus rapide que le nombre infini d'exécutions de la fonction <code>draw()</code>. En fait cette fonction va s'exécuter un nombre infini de fois à chaque fois que la fonction <code>draw()</code> tourne. Donc pour résumer, un nombre ÉNORME de fois.</p>
+
+            <p>Corrigeons cela! On va dire qu'on ne veut que dessiner le prochain cercle si la taille est plus grande que 10. Sinon la taille va devenir négative et ce n'est pas ce qu'on veut...</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                // Dessiner le cercle
+                if(taille > 10) {
+                  dessinerCercle(positionX, positionY, taille - 10);
+                }
+              }
+            </code></pre>
+
+            <p>Tu peux maintenant lancer le code en paix, comme on sait que le code ne va pas tourner à l'infini! Il se peut que tu doives réduire la <code>strokeWeight()</code> pour voir les lignes.</p>
+
+            <p>Remarque qu'on aurait pu simplement faire ceci avec une boucle aussi... Cela aurait sûrement même été plus simple avec une boucle. Mais ne t'inquiètes pas, on va créer quelque chose d'impossible à faire avec une boucle normale!</p>
+
+            <p>Mais d'abord, on va re-créer le dessin de l'étape 2. Notre premier cercle doit être dessiné avec une positionX de -400, ceci est la valeur à mettre dans la fonction <code>draw()</code>. Les autres paramètres peuvent rester les mêmes.</p>
+
+            <pre><code class="language-js">
+              dessinerCercle(-400, 200, 300);
+            </code></pre>
+
+            <p>Dans la fonction <code>dessinerCercle()</code>, on veut alors pas seulement diminuer la taille, mais aussi pousser la figure un peu à droite.</p>
+
+            <p>Pour ce faire, tu peux simplement, lorsque tu re-appelles la fonction, pousser la positionX un peu à droite ;-) </p>
+
+            <pre><code class="language-js">
+              dessinerCercle(positionX + 20, positionY, taille - 6);
+            </code></pre>
+
+            <p>Voilà! On a réussi à reproduire le même code qu'avant, mais de façon plus élégante!</p>
+
+            <p>Tu n'est peut être pas encore convaincu de cette méthode, comme on aurait sûrement pu un peu travailler sur la méthode avec la boucle pour la rendre élégante aussi. Et tu as raison! C'est pourquoi nous allons nous attaquer à un autre exemple encore plus joli dans l'étape suivante!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Étape 4 -->
+      <div class="card">
+        <div class="card-header" id="heading4">
+          <h2 class="mb-0">
+            <button class="btn btn-link done task" type="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+              Étape 4 - Exemple plus compliqué
+            </button>
+          </h2>
+        </div>
+        <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+          <div class="card-body">
+            <p>On va maintenant faire un exemple plus compliqué pour démontrer l'utilité de la récursion! L'idée est toujours avec des cercles, mais à chaque cercle qu'on dessine on va en dessiner un à droite et à gauche. Ceci va former quelque chose de bizarre, comme à chaque cercle à droite et à gauche, on va dessiner un cercle à droite et à gauche, etc.</p>
+
+            <p>Tout d'abord, on veut commencer par un gros cercle au milieu. Pour ce faire, change les paramètres initiaux de <code>dessinerCercle()</code> dans la fonction <code>draw()</code>.</p>
+
+            <p>Ensuite, on veut dessiner 2 cercles à chaque fois qu'on a dessiné un cercle dans notre fonction. N'oublie pas de garder le <code>if() {...}</code>, sinon on aura le problème que le programme va tourner à l'infini. Tu peux pourtant réduire le nombre de l'autre côté de l'inégalité.</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                circle(..., ..., ...);
+                if(taille > 1) {
+                  dessinerCercle(..., ..., ...);
+                  dessinerCercle(..., ..., ...);
+                }
+              }
+            </code></pre>
+
+            <p>Tu peux changer la taille par un facteur multiplicatif plutôt qu'additif si tu le souhaites, cela donne très bien à mon avis! (Donc faire par exemple <code>taille * 0.6</code>). N'oublie pas que le premier nouveau cercle doit être décalé vers la droite, et le deuxième vers la gauche (Ou l'inverse.)</p>
+
+            <p>Voici mon code, mais adapte le comme tu le veux!</p>
+
+            <pre><code class="language-js">
+              function dessinerCercle(positionX, positionY, taille) {
+                circle(positionX, positionY, taille);
+                if(taille > 1) {
+                  dessinerCercle(positionX - taille/2, positionY, taille*0.6);
+                  dessinerCercle(positionX + taille/2, positionY, taille*0.6);
+                }
+              }
+            </code></pre>
+
+            <p>Essaie de dessiner des cercles dans d'autres directions, peut être dessiner plus de 2 cercles par cercle. Tu peux aussi essayer des d'autres formes! Tu peux aussi changer la couleur en fonction de la taille (Tu peux ce faire en ajoutant un autre paramètre, je te laisse expérimenter ;-) )</p>
+          </div>
+        </div>
+      </div>
+      
+
+
+    </div> 
+  </div>
+
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://techieslab.be/"><i class="fas fa-globe"></i></i></a>
+    <a href="https://www.facebook.com/TechiesLabBrussels"><i class="fab fa-facebook"></i></a>
+    <a href="https://twitter.com/TechiesLab"><i class="fab fa-twitter"></i></a>
+  </div>
+  <div class="footer-copyright">
+    <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3/3298561-faites-votre-mise-en-page-avec-flexbox#/id/r-3298711" rel="noopener noreferrer" target="_blank" class="alert-link copyright">
+      <i class="far fa-copyright"></i>
+      2020 Techies Lab ASBL. All rights reserved.
+    </a>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="javascript/prism.js"></script>
+</body>
+</html>
